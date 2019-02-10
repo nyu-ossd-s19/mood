@@ -7,7 +7,7 @@
   "description": "Gives you a random GIF as a homepage",
 
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "icons/mood-128.png"
   },
 
   "chrome_url_overrides": {
