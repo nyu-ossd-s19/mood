@@ -94,11 +94,19 @@ function getDayWeek(number){
   }
 }
 
+function formatDate(today){
+  const month = today.getMonth()+1;
+  const day = today.getDate();
+  const year = today.getFullYear();
+  return getDayWeek(today.getDay()) + ", " + month+"/"+day+"/"+year;
+}
+
 function main() {
     const today = new Date();
     const greeting = setGreeting(today);
     console.log("is this working?");
     document.getElementById('greeting').innerText = greeting;
+    document.getElementById('header_date').innerText = formatDate(today);
     getGif(getDayWeek(today.getDay()),"Cold");
 
 
