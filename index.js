@@ -73,6 +73,10 @@ function getGif(weekday, weather) {
     req.send(null);
 }
 
+function setDate(date) {
+    return date.toDateString();
+}
+
 function getDayWeek(number){
   switch(number){
     case 1:
@@ -97,8 +101,10 @@ function getDayWeek(number){
 function main() {
     const today = new Date();
     const greeting = setGreeting(today);
-    console.log("is this working?");
     document.getElementById('greeting').innerText = greeting;
+    document.getElementById('date').innerText = setDate(today);
+    
+    console.log("is this working?");
     getGif(getDayWeek(today.getDay()),"Cold");
 
 
