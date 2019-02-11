@@ -77,6 +77,29 @@ function setDate(date) {
     return date.toDateString();
 }
 
+function getWeather() {
+    let latitude, longitude;
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+        });
+    } else {
+        console.log(`Geolocation is not supported by this browser`);
+    }    
+
+    const url = `https://samples.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=9dac3614584901a93c9951c6cf9db0ed`;
+    const req = new XMLHttpRequest();
+    req.responseType = 'json';
+    req.open('GET', url, true);
+    req.onload = function () {
+        const jsonResponse = req.response;
+        console.log(`json response = ${jsonResponse}`);
+    };
+    req.send(null);
+}
+
 function getDayWeek(number){
   switch(number){
     case 1:
@@ -103,7 +126,7 @@ function main() {
     const greeting = setGreeting(today);
     document.getElementById('greeting').innerText = greeting;
     document.getElementById('date').innerText = setDate(today);
-    
+    getWeather();
     console.log("is this working?");
     getGif(getDayWeek(today.getDay()),"Cold");
 
