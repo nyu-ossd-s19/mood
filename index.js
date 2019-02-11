@@ -84,13 +84,13 @@ function getWeather() {
         console.log(`Geolocation is not supported by this browser`);
     }    
 
-    const url = `https://samples.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=9dac3614584901a93c9951c6cf9db0ed`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=9dac3614584901a93c9951c6cf9db0ed`;
     const req = new XMLHttpRequest();
     req.responseType = 'json';
     req.open('GET', url, true);
     req.onload = function () {
         const jsonResponse = req.response;
-        console.log(`json response = ${jsonResponse}`);
+        console.log(`json response = ${JSON.stringify(jsonResponse)}`);
     };
     req.send(null);
 }
