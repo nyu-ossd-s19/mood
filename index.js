@@ -68,6 +68,11 @@ function main() {
     const greeting = setGreeting(today);
     document.querySelector('#greeting').innerText = greeting;
 
+    // HTTP request for gif obj
+    var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=QeIbhDUZzaKIbHhsfUD9Ez3jmuUz7HVM&limit=1");
+
+    
+
     console.log(`today is ${today.toUTCString()}`);
     console.log(`the time is ${today.toLocaleTimeString()}`);   
 
