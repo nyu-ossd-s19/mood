@@ -1,38 +1,25 @@
 <!DOCTYPE html>
-  <html lang="en">
+<html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>New Tab | Today's Mood</title>
-    <link rel="stylesheet" href="index.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>New Tab | Today's Mood</title>
+  <link rel="stylesheet" href="index.css">
+</head>
 
-  <body>
-    <h1 id="greeting">Good Day</h1>
-    <div id="gif"></div>
-    <div class="tab_link">
-      <a href="http://albert.nyu.edu/">Albert</a>
-    </div>
-    <div class="tab_link">
-      <a href="http://classes.nyu.edu/">NYU Classes</a>
-    </div>
-	  <script src="index.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
-    var url = "http://api.giphy.com/v1/gifs/trending?api_key=QeIbhDUZzaKIbHhsfUD9Ez3jmuUz7HVM&limit=1";
-    var req = new XMLHttpRequest();
-    req.responseType = 'json';
-    req.open('GET', url, true);
-    req.onload  = function() {
-      var jsonResponse = req.response;
-      image_url = jsonResponse.data[0].images.downsized_medium.url;
-      var img = document.createElement("img");
-      img.src = image_url;
-      document.getElementById("gif").appendChild(img);;
-    };
-    req.send(null);
-  </script>
-  </body>
+<body>
+  <h1 id="greeting">Good Day</h1>
+  <div id="gif"></div>
+  <div class="tab_link">
+    <a href="http://albert.nyu.edu/">Albert</a>
+  </div>
+  <div class="tab_link">
+    <a href="http://classes.nyu.edu/">NYU Classes</a>
+  </div>
+  
+  <script src="index.js"></script>
+</body>
+
 </html>
