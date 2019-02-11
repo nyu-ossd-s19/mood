@@ -14,8 +14,8 @@
     "activeTab"
   ],
 
-  "background": {
-    "scripts": ["index.js"]
+  "chrome_url_overrides": {
+    "newtab": "index.html"
   },
 
   "browser_action": {
