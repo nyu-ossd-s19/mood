@@ -1,17 +1,26 @@
 {
 
   "manifest_version": 2,
-  "name": "Mood",
+  "name": "mood",
   "version": "1.0",
 
-  "description": "Gives you a random GIF as a homepage",
-
+  "description": "Mood is a Mozilla Firefox extension that allows users to open new tabs/windows and see a GIF that describes the weather and the day.",
+  "homepage_url": "https://github.com/nyu-ossd-s19/mood",
   "icons": {
     "48": "icons/mood-128.png"
   },
 
-  "chrome_url_overrides": {
-    "newtab": "index.html"
+  "permissions": [
+    "activeTab"
+  ],
+
+  "background": {
+    "scripts": ["index.js"]
+  },
+
+  "browser_action": {
+    "default_icon": "icons/purple-48.jpg",
+    "default_title": "mood"
   }
 
 }
