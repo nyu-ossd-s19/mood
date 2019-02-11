@@ -16,3 +16,8 @@ body {
 	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 }
+
+.tab_link {
+	bottom: -300px;
+	position: relative;
+}
