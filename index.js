@@ -1,3 +1,4 @@
+(function() {
 
 function setTimeOfDay(time) {
     const timeArr = time.split(' ');
@@ -58,6 +59,7 @@ function setGreeting(date) {
 }
 
 function main() {
+    browser.tabs.update({'url': browser.extension.getURL('index.html')});
     const today = new Date();
     // todo use OpenWeatherMaps API for the current
     // const weather = ''; 
@@ -66,9 +68,17 @@ function main() {
     const greeting = setGreeting(today);
     document.querySelector('#greeting').innerText = greeting;
 
+    // HTTP request for gif obj
+    var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=QeIbhDUZzaKIbHhsfUD9Ez3jmuUz7HVM&limit=1");
+
+    
+
     console.log(`today is ${today.toUTCString()}`);
-    console.log(`the time is ${today.toLocaleTimeString()}`);    
+    console.log(`the time is ${today.toLocaleTimeString()}`);   
 
 }
 
-document.addEventListener('DOMContentLoaded', main, false);
+//document.addEventListener('DOMContentLoaded', main, false);
+browser.tabs.onCreated.addListener(main);
+
+})();
