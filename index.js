@@ -1,80 +1,79 @@
-
 function setTimeOfDay(time) {
-    const timeArr = time.split(' ');
-    const hour = timeArr[0].split(':');
-        
-    if (timeArr[1] === 'AM') {
-        switch (parseInt(hour[0])) {
-            case 12:
-            case 1:
-            case 2:
-            case 3:
-                return "Night";
-                break;
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 11:
-                return "Morning";
-                break;
-            default:
-                return "Day"
-                break;
-        }
-    } else {
-        
-        switch (parseInt(hour[0])) {
-            case 12:
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-                return "Afternoon";
-                break;
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-                return "Evening";
-                break;
-            case 9:
-            case 10:
-            case 11:
-                return "Night";
-                break;
-            default:
-                return "Day"
-                break;
-        }
+  const timeArr = time.split(' ');
+  const hour = timeArr[0].split(':');
+
+  if (timeArr[1] === 'AM') {
+    switch (parseInt(hour[0])) {
+      case 12:
+      case 1:
+      case 2:
+      case 3:
+        return "Night";
+        break;
+      case 4:
+      case 5:
+      case 6:
+      case 7:
+      case 8:
+      case 9:
+      case 10:
+      case 11:
+        return "Morning";
+        break;
+      default:
+        return "Day"
+        break;
     }
+  } else {
+
+    switch (parseInt(hour[0])) {
+      case 12:
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+        return "Afternoon";
+        break;
+      case 5:
+      case 6:
+      case 7:
+      case 8:
+        return "Evening";
+        break;
+      case 9:
+      case 10:
+      case 11:
+        return "Night";
+        break;
+      default:
+        return "Day"
+        break;
+    }
+  }
 }
 
 function setGreeting(date) {
-    return `Good ${setTimeOfDay(date.toLocaleTimeString())}`;
+  return `Good ${setTimeOfDay(date.toLocaleTimeString())}`;
 }
 
 function getGif(weekday, weather) {
-    const url = 'http://api.giphy.com/v1/gifs/search?q='+weekday+'%20funny%20mood'+weather+'&api_key=QeIbhDUZzaKIbHhsfUD9Ez3jmuUz7HVM&limit=20';
-    const req = new XMLHttpRequest();
-    req.responseType = 'json';
-    req.open('GET', url, true);
-    req.onload = function () {
-      const jsonResponse = req.response;
-      const random_gif = Math.floor(Math.random() * Math.floor(20));
-      const image_url = jsonResponse.data[random_gif].images.downsized_medium.url;
-      const img = document.createElement("img");
-      img.src = image_url;
-      document.getElementById("gif").appendChild(img);;
-    };
-    req.send(null);
+  const url = 'http://api.giphy.com/v1/gifs/search?q=' + weekday + '%20funny%20mood' + weather + '&api_key=QeIbhDUZzaKIbHhsfUD9Ez3jmuUz7HVM&limit=20';
+  const req = new XMLHttpRequest();
+  req.responseType = 'json';
+  req.open('GET', url, true);
+  req.onload = function () {
+    const jsonResponse = req.response;
+    const random_gif = Math.floor(Math.random() * Math.floor(20));
+    const image_url = jsonResponse.data[random_gif].images.downsized_medium.url;
+    const img = document.createElement("img");
+    img.src = image_url;
+    document.getElementById("gif").appendChild(img);;
+  };
+  req.send(null);
 }
 
-function getDayWeek(number){
-  switch(number){
+function getDayWeek(number) {
+  switch (number) {
     case 1:
       return "Monday";
     case 2:
@@ -94,24 +93,24 @@ function getDayWeek(number){
   }
 }
 
-function formatDate(today){
-  const month = today.getMonth()+1;
+function formatDate(today) {
+  const month = today.getMonth() + 1;
   const day = today.getDate();
   const year = today.getFullYear();
-  return getDayWeek(today.getDay()) + ", " + month+"/"+day+"/"+year;
+  return getDayWeek(today.getDay()) + ", " + month + "/" + day + "/" + year;
 }
 
 function main() {
-    const today = new Date();
-    const greeting = setGreeting(today);
-    console.log("is this working?");
-    document.getElementById('greeting').innerText = greeting;
-    document.getElementById('header_date').innerText = formatDate(today);
-    getGif(getDayWeek(today.getDay()),"Cold");
+  const today = new Date();
+  const greeting = setGreeting(today);
+  console.log("is this working?");
+  document.getElementById('greeting').innerText = greeting;
+  document.getElementById('header_date').innerText = formatDate(today);
+  getGif(getDayWeek(today.getDay()), "Cold");
 
 
-    // todo use OpenWeatherMaps API for the current weather
-    // const weather = ''; 
+  // todo use OpenWeatherMaps API for the current weather
+  // const weather = ''; 
 }
 
 main();
