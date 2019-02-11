@@ -3,6 +3,9 @@
 ## Proposal/Overview
 Mood is a Mozilla Firefox extension that allows users to open new tabs/windows and see a GIF that describes the weather and the day.
 
+### UI Design
+![UI Design](docs/ui.jpeg)
+
 ## Getting Started
 
 ### To download file from terminal:
