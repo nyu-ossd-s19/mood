@@ -57,14 +57,15 @@ function setGreeting(date) {
     return `Good ${setTimeOfDay(date.toLocaleTimeString())}`;
 }
 
-function getGif() {
-    const url = "http://api.giphy.com/v1/gifs/trending?api_key=QeIbhDUZzaKIbHhsfUD9Ez3jmuUz7HVM&limit=1";
+function getGif(weekday, weather) {
+    const url = 'http://api.giphy.com/v1/gifs/search?q='+weekday+'%20funny%20mood'+weather+'&api_key=QeIbhDUZzaKIbHhsfUD9Ez3jmuUz7HVM&limit=20';
     const req = new XMLHttpRequest();
     req.responseType = 'json';
     req.open('GET', url, true);
     req.onload = function () {
       const jsonResponse = req.response;
-      const image_url = jsonResponse.data[0].images.downsized_medium.url;
+      const random_gif = Math.floor(Math.random() * Math.floor(20));
+      const image_url = jsonResponse.data[random_gif].images.downsized_medium.url;
       const img = document.createElement("img");
       img.src = image_url;
       document.getElementById("gif").appendChild(img);;
@@ -72,16 +73,37 @@ function getGif() {
     req.send(null);
 }
 
+function getDayWeek(number){
+  switch(number){
+    case 1:
+      return "Monday";
+    case 2:
+      return "Tuesday";
+    case 3:
+      return "Wednesday";
+    case 4:
+      return "Thursday";
+    case 5:
+      return "Friday";
+    case 6:
+      return "Saturday";
+    case 7:
+      return "Sunday";
+    default:
+      return "Day";
+  }
+}
+
 function main() {
     const today = new Date();
     const greeting = setGreeting(today);
-    document.querySelector('#greeting').innerText = greeting;
-    // xhr request for gif
-    getGif();
+    console.log("is this working?");
+    document.getElementById('greeting').innerText = greeting;
+    getGif(getDayWeek(today.getDay()),"Cold");
 
 
     // todo use OpenWeatherMaps API for the current weather
     // const weather = ''; 
 }
 
-document.addEventListener('DOMContentLoaded', main, false);
+main();
