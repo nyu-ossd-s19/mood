@@ -29,7 +29,7 @@ Open a new tab in the same Firefox window you loaded the extension into.
 
 ## License
 
-You can view the license this project is under by going [here](/license.md).
+You can view the license this project is under by going [here](https://github.com/nyu-ossd-s19/mood/blob/master/LICENSE.md).
 
 ## Contributing
 
