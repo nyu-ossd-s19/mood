@@ -72,6 +72,19 @@ function getGif(weekday, weather) {
   req.send(null);
 }
 
+function getWeather(latitude, longitude) {
+  const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=9dac3614584901a93c9951c6cf9db0ed`;
+  const req = new XMLHttpRequest();
+  req.responseType = 'json';
+  req.open('GET', url, true);
+  req.onload = function () {
+    const jsonResponse = req.response;
+    // console.log(`json response = ${JSON.stringify(jsonResponse)}`);
+    return jsonResponse.weather[0].main;
+  };
+  req.send(null);
+}
+
 function getDayWeek(number) {
   switch (number) {
     case 1:
@@ -103,14 +116,18 @@ function formatDate(today) {
 function main() {
   const today = new Date();
   const greeting = setGreeting(today);
-  console.log("is this working?");
   document.getElementById('greeting').innerText = greeting;
   document.getElementById('header_date').innerText = formatDate(today);
-  getGif(getDayWeek(today.getDay()), "Cold");
-
-
-  // todo use OpenWeatherMaps API for the current weather
-  // const weather = ''; 
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const weather = getWeather(position.coords.latitude, position.coords.longitude);
+      // NOTE: call the Giphy api after getting the weather, because of async calls
+      getGif(getDayWeek(today.getDay()), weather);
+    }, () => { getGif(getDayWeek(today.getDay()), "Cold"); });
+  } else {
+    getGif(getDayWeek(today.getDay()), "Cold");
+    console.log(`Geolocation is not supported by this browser`);
+  }
 }
 
 main();

@@ -16,11 +16,6 @@
 
   "chrome_url_overrides": {
     "newtab": "index.html"
-  },
-
-  "browser_action": {
-    "default_icon": "icons/purple-48.jpg",
-    "default_title": "mood"
   }
 
 }
