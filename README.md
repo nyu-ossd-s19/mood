@@ -33,4 +33,4 @@ You can view the license this project is under by going [here](https://github.co
 
 ## Contributing
 
-Want to contribute to this open source project? Go [here](/contributing.md) to find our contribution guidelines.
+Want to contribute to this open source project? Go [here](https://github.com/nyu-ossd-s19/mood/blob/master/CONTRIBUTING.md) to find our contribution guidelines.
