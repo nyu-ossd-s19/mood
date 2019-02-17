@@ -29,8 +29,8 @@ Open a new tab in the same Firefox window you loaded the extension into.
 
 ## License
 
-You can view the license this project is under by going [here](/license.md).
+You can view the license this project is under by going [here](LICENSE.md).
 
 ## Contributing
 
-Want to contribute to this open source project? Go [here](/contributing.md) to find our contribution guidelines.
+Want to contribute to this open source project? Go [here](CONTRIBUTING.md) to find our contribution guidelines.
